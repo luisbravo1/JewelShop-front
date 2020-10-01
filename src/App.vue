@@ -84,7 +84,7 @@
       >
         <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
         <img class="mr-3" width="60vw" src=""/>
-        <v-toolbar-title class="logo">CADATAZA</v-toolbar-title>
+        <v-toolbar-title class="logo">JEWELSHOP</v-toolbar-title>
       </v-app-bar>
 
       <v-navigation-drawer
@@ -145,7 +145,7 @@
       >
         <div class="d-flex align-center clickable">
           <!-- <v-img
-            alt="Cadataza logo"
+            alt="JewelShop logo"
             class="shrink mr-2"
             contain
             src="./assets/logo.png"
