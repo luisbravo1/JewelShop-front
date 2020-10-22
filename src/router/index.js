@@ -2,6 +2,9 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Store from '../views/Store.vue'
+import Details from '../views/Details.vue'
+import Checkout from '../views/Checkout.vue'
+import Cart from '../views/Cart.vue'
 import Account from '../views/Account.vue'
 import Address from '../views/Address.vue'
 
@@ -17,6 +20,21 @@ const routes = [
     path: '/store',
     name: 'Store',
     component: Store
+  },
+  {
+    path: '/details/:productId',
+    name: 'Details',
+    component: Details
+  },
+  {
+    path: '/checkout/',
+    name: 'Checkout',
+    component: Checkout
+  },
+  {
+    path: '/cart/',
+    name: 'Cart',
+    component: Cart
   },
   {
     path: '/account',

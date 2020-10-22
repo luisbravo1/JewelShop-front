@@ -456,12 +456,12 @@ export default {
           vm.cartProducts.push({
             id: item.product,
             variation: item.variation,
-            name: fullProduct.name + ' - ' + fullVariation.weight + fullVariation.unit,
+            name: fullProduct.name + ' - ' + fullVariation.typeProduct,
             image: fullProduct.pictures[0].src,
             quantity: item.quantity,
             price: fullVariation.price,
             stock: fullVariation.stock,
-            coffeeType: item.coffeeType
+            typeProduct: fullVariation.typeProduct
           })
         })
       }, response => {
