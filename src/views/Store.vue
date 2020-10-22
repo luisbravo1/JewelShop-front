@@ -107,8 +107,12 @@
                   <v-card-text>
                     <p class="LGC" style="font-size: 3vh;"><b>{{ product.name }}</b></p>
                     <v-layout>
-                      <div>
-                        <span class="subtitle-1 LGC__bold_title">$ {{ product.price.toFixed(2) }} MXN</span>
+                      <div v-if="product.variations[0].discount > 0">
+                        <span class="subtitle-1 LGC__bold_title pr-3">$ {{ product.variations[0].price.toFixed(2) }} MXN</span>
+                        <span class="subtitle-1 LGC__bold_title red--text"><s>$ {{ product.variations[0].discount.toFixed(2) }} MXN</s></span>
+                      </div>
+                      <div v-else>
+                        <span class="subtitle-1 LGC__bold_title">$ {{ product.variations[0].price.toFixed(2) }} MXN</span>
                       </div>
                     </v-layout>
                   </v-card-text>
