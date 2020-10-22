@@ -78,7 +78,7 @@
     <div v-if="windowSize < 2">
       <v-app-bar
         app
-        color="primary"
+        color="black"
         dark
         clipped-left
       >
@@ -139,22 +139,23 @@
     <div v-else>
       <v-app-bar
         app
-        color="primary"
+        color="black"
         dark
         clipped-left
       >
+       <!--<router-link to="/"> -->
         <div class="d-flex align-center clickable">
-          <!-- <v-img
-            alt="JewelShop logo"
-            class="shrink mr-2"
-            contain
-            src="./assets/logo.png"
-            transition="scale-transition"
-            width="200"
-            @click="pushAndResetNav('/')"
-          /> -->
-          JewelShop
-        </div>
+            <!-- <v-img
+              alt="JewelShop logo"
+              class="shrink mr-2"
+              contain
+              src="./assets/logo.png"
+              transition="scale-transition"
+              width="200"
+              @click="pushAndResetNav('/')"
+            /> -->
+            JewelShop
+          </div>
 
         <v-spacer></v-spacer>
 
@@ -227,7 +228,8 @@
         width="100%"
         absolute
         class="lighten-1 white--text text-center"
-        color="primary"
+        color="black"
+        dark
       >
         <v-layout row wrap pa-12>
           <v-flex xs11 sm6 md3 offset-xs1 offset-sm4 offset-md1 text-left pt-6 pb-4>
@@ -356,11 +358,11 @@ export default {
     ],
     socialMedia: [
       {
-        link: 'https://instagram.com/',
+        link: 'https://www.instagram.com/maritza.joyeria/',
         icon: 'fab fa-instagram'
       },
       {
-        link: 'https://facebook.com/',
+        link: 'https://www.facebook.com/maritza.joyeria/',
         icon: 'fab fa-facebook-f'
       },
       {
