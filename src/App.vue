@@ -319,6 +319,11 @@ export default {
     cartProducts: [],
     links: [
       {
+        to: '/',
+        text: 'Inicio',
+        icon: 'home'
+      },
+      {
         to: '/about',
         text: 'Quiénes somos',
         icon: 'info'
