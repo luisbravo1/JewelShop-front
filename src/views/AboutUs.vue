@@ -1,43 +1,24 @@
 <template>
   <v-container>
-    <h1 class="text-center">Sobre Nosotros</h1>
-    <v-row>
-        <v-col cols="12" md="6" order-md="2" >
+    <h1 class="text-center p-5">Sobre Nosotros</h1>
+    <v-row class="px-3">
+      <v-col cols="12" lg="6">
+        <p>Somos una marca mexicana de joyería de plata y queremos que tengas piezas únicas y de gran calidad.</p>
+        <p>Todas nuestras piezas son de plata de alta calidad y hechas en México.</p>
+        <p>Después de hacer tu orden, recibiras un correo electrónico con la confirmación de tu compra. Cuando tu pieza haya sido enviada, te enviaremos el número de guía de tu paquete.</p>
+        <p>Tu pieza debería llegar en aproximadamente 5-7 días hábiles.</p>
+        <p>Cualquier duda puedes mandarnos un mensaje.</p>
+        <h2>Contáctanos</h2>
+        <p>joyeria@maritza.com</p>
+      </v-col>
+      <v-col cols="12" lg="6">
+          <p>Puedes encontrarnos en Calle Cerrada Oaxtepec 12175, Colinas de Agua Caliente, 22030 Tijuana, B.C.</p>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3365.4217263031614!2d-116.99876118508982!3d32.48815568106026!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80d9377f16505023%3A0xfd843e6f4f33d1b9!2sBCA%20Showroom%20Colinas%20de%20Agua%20Caliente!5e0!3m2!1sen!2smx!4v1603950359668!5m2!1sen!2smx" width="100%" height="350" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+          <!--
           <div class="img">
             <img width="100%" src="https://i2.wp.com/thehappening.com/wp-content/uploads/2015/12/joyeria-mexicana.jpg?fit=1024%2C694&ssl=1"/>
           </div>
-      </v-col>
-      <v-col cols="12" md="6" order-sm="2" order-md="1">
-        <!-- <p class="lead">
-          Somos una empresa ubicada en Tijuana, Baja California que se dedica a
-          la venta de joyeria. Manejamos joyeria de plata y oro.
-        </p>
-        <p class="lead">
-          Nuestro objetivo es ser la empresa de joyeria más reconocida en
-          Tijuana.
-        </p> -->
-        <h5>Misión</h5>
-        <p class="lead">“Acompañar a nuestros clientes en sus momentos felices durante toda su vida”</p>
-        <h5>Visión</h5>
-        <p class="lead">
-            Fidelizar a nuestros clientes a través de:
-            <ul>
-                <li>Atención y servicios que excedan sus expectativas.</li>
-                <li>Facilidad y comodidad de compra.</li>
-                <li>Variedad y calidad en nuestros productos.</li>
-                <li>Gente Brillante</li>
-            </ul>
-        </p>
-        <h5>Valores</h5>
-        <p class="lead">
-            <ul>
-                <li>Responsabilidad</li>
-                <li>Compromiso</li>
-                <li>Honestidad</li>
-                <li>Actitud positiva y de servicio</li>
-                <li>Mejora continua</li>
-            </ul>
-        </p>
+          -->
       </v-col>
     </v-row>
   </v-container>

@@ -84,7 +84,7 @@
       >
         <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
         <img class="mr-3" width="60vw" src=""/>
-        <v-toolbar-title class="logo">JEWELSHOP</v-toolbar-title>
+        <v-toolbar-title class="logo">Maritza Joyería</v-toolbar-title>
       </v-app-bar>
 
       <v-navigation-drawer
@@ -154,7 +154,7 @@
               width="200"
               @click="pushAndResetNav('/')"
             /> -->
-            JewelShop
+            Maritza
           </div>
 
         <v-spacer></v-spacer>
@@ -233,9 +233,9 @@
       >
         <v-layout row wrap pa-12>
           <v-flex xs11 sm6 md3 offset-xs1 offset-sm4 offset-md1 text-left pt-6 pb-4>
-            <div class="LGC"><v-icon medium color="accent" class="px-4">phone</v-icon>81 3456 7890</div>
+            <div class="LGC"><v-icon medium color="accent" class="px-4">phone</v-icon>664 309 5119</div>
             <div class="LGC"><v-icon medium color="accent" class="px-4">room</v-icon>Tijuana, Baja California</div>
-            <div class="LGC"><v-icon medium color="accent" class="px-4">mail</v-icon>INFO@JEWELSHOP.COM</div>
+            <div class="LGC"><v-icon medium color="accent" class="px-4">mail</v-icon>joyeria@maritza.com</div>
           </v-flex>
           <v-flex xs12 md5 offset-md1>
             <div>
