@@ -8,6 +8,7 @@ import Cart from '../views/Cart.vue'
 import Account from '../views/Account.vue'
 import Address from '../views/Address.vue'
 import AboutUs from '../views/AboutUs.vue'
+import Contact from '../views/Contact.vue'
 
 Vue.use(VueRouter)
 
@@ -51,6 +52,11 @@ const routes = [
     path: '/about',
     name: 'AboutUs',
     component: AboutUs
+  },
+  {
+    path: '/contact',
+    name: 'Contact',
+    component: Contact
   }
 ]
 

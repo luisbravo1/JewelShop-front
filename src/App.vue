@@ -93,7 +93,8 @@
         persistent
         clipped
         disable-resize-watcher
-        color="primary"
+        color="black"
+        dark
       >
         <v-list-item dark>
           <v-list-item-content class="text-center">
@@ -155,7 +156,7 @@
               @click="pushAndResetNav('/')"
             /> -->
             Maritza
-          </div>
+        </div>
 
         <v-spacer></v-spacer>
 
@@ -233,20 +234,20 @@
       >
         <v-layout row wrap pa-12>
           <v-flex xs11 sm6 md3 offset-xs1 offset-sm4 offset-md1 text-left pt-6 pb-4>
-            <div class="LGC"><v-icon medium color="accent" class="px-4">phone</v-icon>664 309 5119</div>
-            <div class="LGC"><v-icon medium color="accent" class="px-4">room</v-icon>Tijuana, Baja California</div>
-            <div class="LGC"><v-icon medium color="accent" class="px-4">mail</v-icon>joyeria@maritza.com</div>
+            <div class="LGC"><v-icon medium color="white" class="px-4">phone</v-icon>664 309 5119</div>
+            <div class="LGC"><v-icon medium color="white" class="px-4">room</v-icon>Tijuana, Baja California</div>
+            <div class="LGC"><v-icon medium color="white" class="px-4">mail</v-icon>joyeria@maritza.com</div>
           </v-flex>
           <v-flex xs12 md5 offset-md1>
             <div>
               <v-btn
                 v-for="media in socialMedia"
                 :key="media.link"
-                class="mx-4 white--text"
+                class="mx-4 black--text"
                 fab
                 target="_blank"
                 :href="media.link"
-                color="accent"
+                color="white"
                 rounded
                 depressed
                 small
@@ -324,14 +325,19 @@ export default {
         icon: 'home'
       },
       {
+        to: '/store',
+        text: 'Tienda',
+        icon: 'store'
+      },
+      {
         to: '/about',
         text: 'Quiénes somos',
         icon: 'info'
       },
       {
-        to: '/store',
-        text: 'Tienda',
-        icon: 'store'
+        to: '/contact',
+        text: 'Contacto',
+        icon: 'message'
       }
     ],
     linksMobile: [
@@ -341,14 +347,19 @@ export default {
         icon: 'home'
       },
       {
+        to: '/store',
+        text: 'Tienda',
+        icon: 'store'
+      },
+      {
         to: '/about',
         text: 'Quiénes somos',
         icon: 'info'
       },
       {
-        to: '/store',
-        text: 'Tienda',
-        icon: 'store'
+        to: '/contact',
+        text: 'Contacto',
+        icon: 'message'
       },
       {
         to: '/profile',
