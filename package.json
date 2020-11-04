@@ -10,6 +10,7 @@
   "dependencies": {
     "@chenfengyuan/vue-number-input": "^1.2.1",
     "core-js": "^3.6.5",
+    "emailjs-com": "^2.6.3",
     "moment": "^2.29.1",
     "register-service-worker": "^1.7.1",
     "vue": "^2.6.11",

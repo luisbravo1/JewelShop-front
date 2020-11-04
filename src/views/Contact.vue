@@ -1,39 +1,41 @@
 <template>
   <v-container>
+    <v-alert type="success" v-if="success">{{responseMessage}}</v-alert>
+    <v-alert type="error" v-if="error">{{responseMessage}}</v-alert>
     <v-row class="px-3 py-5">
       <v-col cols="12" lg="6">
         <v-container>
           <h2>Contáctanos</h2>
           <v-form ref="form" v-model="valid" lazy-validation>
             <v-text-field
-              v-model="name"
+              v-model="template.name"
               :rules="nameRules"
               label="Nombre"
               required
             ></v-text-field>
 
             <v-text-field
-              v-model="asunto"
+              v-model="template.asunto"
               :rules="asutoRules"
               label="Asunto"
               required
             ></v-text-field>
 
             <v-text-field
-              v-model="email"
+              v-model="template.email"
               :rules="emailRules"
               label="E-mail"
               required
             ></v-text-field>
 
             <v-textarea
-              v-model="mensaje"
+              v-model="template.mensaje"
               :rules="mensajeRules"
               label="Mensaje"
               required
             ></v-textarea>
 
-            <v-btn class="text-center" @click="submit"> Enviar </v-btn>
+            <v-btn class="text-center" @click="sendEmail"> Enviar </v-btn>
           </v-form>
         </v-container>
       </v-col>
@@ -61,9 +63,54 @@
 </template>
 
 <script>
+import emailjs from 'emailjs-com'
+
 export default {
   name: 'Contact',
-  components: {}
+  components: {},
+  data: () => ({
+    template: {
+      name: '',
+      asunto: '',
+      email: '',
+      mensaje: ''
+    },
+    responseMessage: '',
+    success: false,
+    error: false
+  }),
+  methods: {
+    sendEmail (e) {
+      if (!this.validateFileds()) {
+        this.responseMessage = 'Por favor llene todos los campos del formulario.'
+        this.error = true
+        setTimeout(() => { this.error = false }, 7500)
+        return
+      }
+      emailjs.init('user_6ykMbTFPd3TBE8caXkbym')
+      emailjs.send('service_gdbpz4m', 'template_key4st9', this.template)
+        .then(response => {
+          console.log('Success!', response.status, response.text)
+          if (response.status === 200) {
+            this.responseMessage = '¡Tu mensaje ha sido enviado!'
+            this.success = true
+            this.template = {}
+            setTimeout(() => { this.success = false }, 7500)
+          }
+        }, error => {
+          console.log('Failed!', error)
+          this.responseMessage = 'Error, intenta mandar el mensaje de nuevo.'
+          this.error = true
+          setTimeout(() => { this.error = false }, 7500)
+        })
+    },
+    validateFileds () {
+      if (!this.template.name || !this.template.asunto || !this.template.email || !this.template.mensaje) {
+        return false
+      }
+      return true
+    }
+  }
 }
 </script>
 
