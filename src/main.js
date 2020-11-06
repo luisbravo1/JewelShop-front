@@ -17,7 +17,7 @@ Vue.use(VuePlaceAutocomplete)
 
 Vue.config.productionTip = false
 
-Vue.http.options.root = 'http://localhost:9000/'
+Vue.http.options.root = 'https://jewel-shop-back.herokuapp.com/'
 // Vue.http.options.root = 'https://api.jewelshop.com/'
 Vue.prototype.moment = moment
 
