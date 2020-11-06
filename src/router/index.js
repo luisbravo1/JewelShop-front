@@ -10,6 +10,7 @@ import Address from '../views/Address.vue'
 import AboutUs from '../views/AboutUs.vue'
 import Confirmation from '../views/Confirmation.vue'
 import CompletedPurchase from '../views/CompletedPurchase.vue'
+import Contact from '../views/Contact.vue'
 
 Vue.use(VueRouter)
 
@@ -63,6 +64,11 @@ const routes = [
     path: '/completedPurchase/:orderId',
     name: 'completedPurchase',
     component: CompletedPurchase
+  },
+  {
+    path: '/contact',
+    name: 'Contact',
+    component: Contact
   }
 ]
 
