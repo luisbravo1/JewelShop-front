@@ -4,10 +4,12 @@ import Home from '../views/Home.vue'
 import Store from '../views/Store.vue'
 import Details from '../views/Details.vue'
 import Checkout from '../views/Checkout.vue'
+import Confirmation from '../views/Confirmation.vue'
 import Cart from '../views/Cart.vue'
 import Account from '../views/Account.vue'
 import Address from '../views/Address.vue'
 import AboutUs from '../views/AboutUs.vue'
+import CompletedPurchase from '../views/CompletedPurchase.vue'
 
 Vue.use(VueRouter)
 
@@ -33,9 +35,19 @@ const routes = [
     component: Checkout
   },
   {
+    path: '/confirmation',
+    name: 'confirmation',
+    component: Confirmation
+  },
+  {
     path: '/cart/',
     name: 'Cart',
     component: Cart
+  },
+  {
+    path: '/completedPurchase/:orderId',
+    name: 'completedPurchase',
+    component: CompletedPurchase
   },
   {
     path: '/account',
