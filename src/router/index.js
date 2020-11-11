@@ -8,6 +8,8 @@ import Cart from '../views/Cart.vue'
 import Account from '../views/Account.vue'
 import Address from '../views/Address.vue'
 import AboutUs from '../views/AboutUs.vue'
+import Confirmation from '../views/Confirmation.vue'
+import CompletedPurchase from '../views/CompletedPurchase.vue'
 import Contact from '../views/Contact.vue'
 import Orders from '../views/Orders.vue'
 
@@ -58,6 +60,16 @@ const routes = [
     path: '/about',
     name: 'AboutUs',
     component: AboutUs
+  },
+  {
+    path: '/confirmation',
+    name: 'confirmation',
+    component: Confirmation
+  },
+  {
+    path: '/completedPurchase/:orderId',
+    name: 'completedPurchase',
+    component: CompletedPurchase
   },
   {
     path: '/contact',

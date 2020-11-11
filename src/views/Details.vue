@@ -257,7 +257,18 @@ export default {
       } else {
         items = []
       }
-      items.push(item)
+
+      var repeated = false
+      items.forEach(function (itemsEach) {
+        if (itemsEach.product === item.product && itemsEach.variation === item.variation) {
+          itemsEach.quantity += item.quantity
+          repeated = true
+        }
+      })
+      if (!repeated) {
+        items.push(item)
+      }
+
       items = JSON.stringify(items)
       this.$cookies.remove('cart')
       this.$cookies.set('cart', items, '30d')
