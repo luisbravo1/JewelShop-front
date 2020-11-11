@@ -11,6 +11,7 @@ import AboutUs from '../views/AboutUs.vue'
 import Confirmation from '../views/Confirmation.vue'
 import CompletedPurchase from '../views/CompletedPurchase.vue'
 import Contact from '../views/Contact.vue'
+import Orders from '../views/Orders.vue'
 
 Vue.use(VueRouter)
 
@@ -49,6 +50,11 @@ const routes = [
     path: '/address',
     name: 'Address',
     component: Address
+  },
+  {
+    path: '/orders',
+    name: 'Orders',
+    component: Orders
   },
   {
     path: '/about',
