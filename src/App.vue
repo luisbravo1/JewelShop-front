@@ -150,12 +150,12 @@
               alt="JewelShop logo"
               class="shrink mr-2"
               contain
-              src="./assets/logo.png"
+              src="./assets/logo.jpg"
               transition="scale-transition"
               width="200"
               @click="pushAndResetNav('/')"
             /> -->
-            Maritza
+            Maritza Joyería
         </div>
 
         <v-spacer></v-spacer>
