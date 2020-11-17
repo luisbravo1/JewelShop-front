@@ -12,6 +12,7 @@ import Confirmation from '../views/Confirmation.vue'
 import CompletedPurchase from '../views/CompletedPurchase.vue'
 import Contact from '../views/Contact.vue'
 import Orders from '../views/Orders.vue'
+import Dashboard from '../views/Dashboard.vue'
 
 Vue.use(VueRouter)
 
@@ -75,6 +76,11 @@ const routes = [
     path: '/contact',
     name: 'Contact',
     component: Contact
+  },
+  {
+    path: '/dashboard',
+    name: 'Dashboard',
+    component: Dashboard
   }
 ]
 
