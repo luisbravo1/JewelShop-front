@@ -14,6 +14,7 @@ import Contact from '../views/Contact.vue'
 import Orders from '../views/Orders.vue'
 import AdminOrders from '../views/AdminOrders.vue'
 import ProfitReport from '../views/ProfitReport.vue'
+import Dashboard from '../views/Dashboard.vue'
 
 Vue.use(VueRouter)
 
@@ -87,6 +88,11 @@ const routes = [
     path: '/adminOrders',
     name: 'AdminOrders',
     component: AdminOrders
+  },
+  {
+    path: '/dashboard',
+    name: 'Dashboard',
+    component: Dashboard
   }
 ]
 

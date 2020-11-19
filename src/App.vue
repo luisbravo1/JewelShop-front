@@ -206,6 +206,9 @@
               <v-list-item v-if="user.role === 'admin'" @click="pushAndResetNav('/adminOrders')">
                 <v-list-item-title>Admin Pedidos</v-list-item-title>
               </v-list-item>
+              <v-list-item v-if="user.role === 'admin'" @click="pushAndResetNav('/dashboard')">
+                <v-list-item-title>Dashboard</v-list-item-title>
+              </v-list-item>
               <v-divider />
               <v-list-item @click="logout">
                 <v-list-item-title>Cerrar Sesión</v-list-item-title>
