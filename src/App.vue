@@ -196,6 +196,9 @@
               <v-list-item @click="pushAndResetNav('/address')">
                 <v-list-item-title>Direcciónes</v-list-item-title>
               </v-list-item>
+              <v-list-item @click="pushAndResetNav('/orders')">
+                <v-list-item-title>Mis Pedidos</v-list-item-title>
+              </v-list-item>
               <v-divider />
               <v-list-item v-if="user.role === 'admin'" @click="pushAndResetNav('/profitReport')">
                 <v-list-item-title>Reporte de Ingresos</v-list-item-title>
@@ -281,7 +284,6 @@
 
 <script>
 import Login from './views/Login.vue'
-
 export default {
   name: 'App',
   components: {
@@ -442,7 +444,6 @@ export default {
         ids.push(tempProduct)
       })
       const cartItems = JSON.stringify(ids)
-
       this.$cookies.remove('cart')
       this.$cookies.set('cart', cartItems, '30d')
     },
@@ -462,13 +463,10 @@ export default {
         return
       }
       const ids = []
-
       cartItems.forEach(function (product) {
         ids.push(product.product)
       })
-
       this.cartProducts = []
-
       this.$http.post('products/getCart', ids, options).then(response => {
         cartItems.forEach(function (item) {
           const fullProduct = response.data.find(dbProduct => dbProduct.id === item.product)
