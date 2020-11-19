@@ -293,6 +293,16 @@ export default {
             id: 2,
             name: 'Collares',
             value: 'Collares'
+          },
+          {
+            id: 3,
+            name: 'Aretes',
+            value: 'Aretes'
+          },
+          {
+            id: 4,
+            name: 'Pulseras',
+            value: 'Pulseras'
           }
         ]
       }

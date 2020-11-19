@@ -16,7 +16,7 @@
               <h4>Piezas únicas y de la más alta calidad</h4>
               <p>Compra nuestra joyería de plata y arma combinaciones tan únicas como tú!</p>
               <v-flex class="d-flex justify-start mt-5 pt-5">
-                <v-btn x-large color="black" dark to="/store"> Ver más </v-btn>
+                <v-btn x-large color="black" dark v-on:click="goStore()"> Ver más </v-btn>
               </v-flex>
             </v-container>
           </v-col>
@@ -45,7 +45,7 @@
                 <h5 class="text-center">$350.00</h5>
               </v-card-subtitle>
               <v-card-actions class="justify-center">
-                <v-btn color="black" dark to="/store"> Agregar al carrito </v-btn>
+                <v-btn color="black" dark  v-on:click="goDetails('5fb6d17488b18a53bee386f2')"> Agregar al carrito </v-btn>
               </v-card-actions>
           </v-card>
         </v-col>
@@ -64,7 +64,7 @@
                 <h5 class="text-center">$550.00</h5>
               </v-card-subtitle>
               <v-card-actions class="justify-center">
-                <v-btn color="black" dark to="/store"> Agregar al carrito </v-btn>
+                <v-btn color="black" dark v-on:click="goDetails('5fb6a9b07f893b002411ed85')"> Agregar al carrito </v-btn>
               </v-card-actions>
           </v-card>
         </v-col>
@@ -83,7 +83,7 @@
               <h5 class="text-center">$450.00</h5>
             </v-card-subtitle>
             <v-card-actions class="justify-center">
-              <v-btn color="black" dark to="/store"> Agregar al carrito </v-btn>
+              <v-btn color="black" dark v-on:click="goDetails('5fb6d38488b18a53bee386f3')"> Agregar al carrito </v-btn>
             </v-card-actions>
           </v-card>
         </v-col>
@@ -102,7 +102,7 @@
               <h5 class="text-center">$330.00</h5>
             </v-card-subtitle>
             <v-card-actions class="justify-center">
-              <v-btn color="black" dark to="/store"> Agregar al carrito </v-btn>
+              <v-btn color="black" dark v-on:click="goDetails('5facde105f4d66cab8b07f23')"> Agregar al carrito </v-btn>
             </v-card-actions>
           </v-card>
         </v-col>
@@ -190,7 +190,7 @@
           </v-col>
         </v-layout>
         <v-flex class="d-flex justify-center mt-5">
-            <v-btn x-large color="black" dark to="/store"> Ver más </v-btn>
+            <v-btn x-large color="black" dark v-on:click="goStore()"> EXPLORAR </v-btn>
         </v-flex>
       </v-container>
     </div>
@@ -201,7 +201,17 @@
 <script>
 export default {
   name: 'Home',
-  components: {}
+  components: {},
+  methods: {
+    goDetails (id) {
+      window.scrollTo(0, 0)
+      this.$router.push('/details/' + id)
+    },
+    goStore () {
+      window.scrollTo(0, 0)
+      this.$router.push('/store')
+    }
+  }
 }
 </script>
 
