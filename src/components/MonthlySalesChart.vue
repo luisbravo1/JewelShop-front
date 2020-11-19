@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <apexchart ref="realtimeChart" type="line" height="200" :options="chartOptions" :series="series" />
+    <apexchart v-if="isDataLoaded" ref="realtimeChart" type="line" height="200" :options="chartOptions" :series="series" />
   </v-container>
 </template>
 
@@ -8,7 +8,7 @@
 export default {
   name: 'MonthlySalesChart',
   data: () => ({
-    // monthlySales: [0, 0, 0],
+    isDataLoaded: false,
     series: [
       {
         name: 'ventas',
@@ -51,7 +51,7 @@ export default {
         }
       },
       xaxis: {
-        categories: ['3', '2', '1'],
+        categories: ['4', '3', '2', '1'],
         labels: {
           style: {
             colors: '#fff'
@@ -76,22 +76,53 @@ export default {
           Authorization: 'Bearer ' + this.$cookies.get('authToken')
         }
       }
-
-      this.$http.get('orders/week1', options).then(response => {
-        this.series[0].data[0] = response.body.totalSales
-      }, response => {
-        console.log('error')
+      const p1 = new Promise((resolve, reject) => {
+        this.$http.get('orders/week1', options)
+          .then(response => {
+            this.series[0].data[0] = response.body.totalSales
+            return resolve()
+          }, response => {
+            console.log('error')
+            return reject(response)
+          })
       })
-      this.$http.get('orders/week2', options).then(response => {
-        this.series[0].data[1] = response.body.totalSales
-      }, response => {
-        console.log('error')
+      const p2 = new Promise((resolve, reject) => {
+        this.$http.get('orders/week2', options)
+          .then(response => {
+            this.series[0].data[1] = response.body.totalSales
+            return resolve()
+          }, response => {
+            console.log('error')
+            return reject(response)
+          })
       })
-      this.$http.get('orders/week3', options).then(response => {
-        this.series[0].data[2] = response.body.totalSales
-      }, response => {
-        console.log('error')
+      const p3 = new Promise((resolve, reject) => {
+        this.$http.get('orders/week3', options)
+          .then(response => {
+            this.series[0].data[2] = response.body.totalSales
+            return resolve()
+          }, response => {
+            console.log('error')
+            return reject(response)
+          })
       })
+      const p4 = new Promise((resolve, reject) => {
+        this.$http.get('orders/week4', options)
+          .then(response => {
+            this.series[0].data[3] = response.body.totalSales
+            return resolve()
+          }, response => {
+            console.log('error')
+            return reject(response)
+          })
+      })
+      Promise.all([p1, p2, p3, p4])
+        .then(() => {
+          this.isDataLoaded = true
+        })
+        .catch((error) => {
+          console.log(error)
+        })
       console.log(this.series[0].data)
     }
   },

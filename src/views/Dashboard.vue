@@ -13,7 +13,7 @@
           <product-sales> </product-sales>
         </v-container>
       </v-col>
-        <h3> Usuarios registrados </h3>
+        <h3>Ventas mensuales</h3>
         <monthly-sales-chart> </monthly-sales-chart>
       <v-row>
       </v-row>
