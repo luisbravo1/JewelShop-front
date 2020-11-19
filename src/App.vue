@@ -194,17 +194,17 @@
                 <v-list-item-title>Contacto</v-list-item-title>
               </v-list-item>
               <v-list-item @click="pushAndResetNav('/address')">
-                <v-list-item-title>Direcciónes</v-list-item-title>
+                <v-list-item-title>Direcciones</v-list-item-title>
               </v-list-item>
               <v-list-item @click="pushAndResetNav('/orders')">
                 <v-list-item-title>Mis Pedidos</v-list-item-title>
               </v-list-item>
-              <v-divider />
-              <v-list-item v-if="user.role === 'admin'" @click="pushAndResetNav('/profitReport')">
-                <v-list-item-title>Reporte de Ingresos</v-list-item-title>
-              </v-list-item>
+              <v-divider v-if="user.role === 'admin'" />
               <v-list-item v-if="user.role === 'admin'" @click="pushAndResetNav('/adminOrders')">
                 <v-list-item-title>Admin Pedidos</v-list-item-title>
+              </v-list-item>
+              <v-list-item v-if="user.role === 'admin'" @click="pushAndResetNav('/profitReport')">
+                <v-list-item-title>Reporte de Ingresos</v-list-item-title>
               </v-list-item>
               <v-list-item v-if="user.role === 'admin'" @click="pushAndResetNav('/dashboard')">
                 <v-list-item-title>Dashboard</v-list-item-title>

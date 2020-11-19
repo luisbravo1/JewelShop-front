@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container v-if="user.role === 'admin'">
     <v-row class="px-3 py-5">
       <v-col cols="12" lg="6">
         <v-container>
@@ -34,6 +34,29 @@ export default {
   },
   data () {
     return {}
+  },
+  methods: {
+    getMe () {
+      var options = {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: 'Bearer ' + this.$cookies.get('authToken')
+        }
+      }
+      this.$http.get('users/me', options).then(response => {
+        window.localStorage.setItem('user', JSON.stringify(response.data))
+        this.user = JSON.parse(window.localStorage.user)
+      }, response => {
+        this.loginDialog = true
+      })
+    }
+  },
+  created () {
+    if ('user' in window.localStorage) {
+      this.user = JSON.parse(window.localStorage.user)
+    } else {
+      this.getMe()
+    }
   }
 }
 

@@ -44,8 +44,11 @@
 
       <v-container>
         <v-layout row wrap pt-2>
+          <v-flex xs2 v-if="user.role === 'admin'">
+            <v-btn large dark @click="dialogAddProduct = true">CREAR PRODUCTO</v-btn>
+          </v-flex>
           <v-spacer></v-spacer>
-          <v-flex xs12 md3>
+          <v-flex xs8 md3>
             <v-text-field
               append-icon="search"
               outlined
@@ -130,6 +133,94 @@
       </v-container>
     </v-container>
 
+    <v-dialog v-model="dialogAddProduct" max-width="1000">
+      <v-card>
+        <v-card-title class="headline">Crear Producto</v-card-title>
+        <v-card-text>
+          <v-layout row wrap px-2>
+            <v-flex xs12>
+              <v-text-field v-model="newProduct.name" label="Nombre del producto" outlined />
+            </v-flex>
+          </v-layout>
+          <v-layout row wrap px-2>
+            <v-flex xs12>
+              <v-text-field v-model="newProduct.pictures[0].src" label="Imagen del producto" outlined />
+            </v-flex>
+          </v-layout>
+          <v-layout row wrap px-2>
+            <v-flex xs2>
+              <v-switch v-model="newProduct.isShown" label="Disponible" />
+            </v-flex>
+            <v-flex xs2>
+              <v-switch v-model="newProduct.bajoPedido" label="Bajo pedido" />
+            </v-flex>
+            <v-flex xs8>
+              <v-text-field v-model="newProduct.category" label="Categoría" outlined />
+            </v-flex>
+          </v-layout>
+          <v-layout row wrap px-2>
+            <v-flex xs12>
+              <v-textarea v-model="newProduct.description" label="Descripción" no-resize outlined />
+            </v-flex>
+          </v-layout>
+        </v-card-text>
+        <v-card-actions>
+          <v-btn dark @click="openVariationsDialog()">Agregar Variaciones</v-btn>
+          <v-spacer />
+          <v-btn color="error" @click="closeDialog()">Cancelar</v-btn>
+          <v-btn
+            color="success"
+            :disabled="newProduct.variations.length <= 0"
+            @click="addProduct()"
+          >
+            Agregar Producto
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+
+    <v-dialog v-model="dialogVariations" max-width="1000">
+      <v-card>
+        <v-card-title class="headline">Variaciones</v-card-title>
+        <v-card-text>
+          <v-layout row wrap px-2>
+            <v-flex xs12>
+              <v-text-field v-model="variationToAdd.typeProduct" label="Nombre" outlined/>
+            </v-flex>
+          </v-layout>
+          <v-layout row wrap px-2>
+            <v-flex xs3 pr-2>
+              <v-text-field v-model="variationToAdd.unit" label="Unidad" outlined/>
+            </v-flex>
+            <v-flex xs3 px-1>
+              <v-text-field v-model="variationToAdd.price" label="Precio" outlined/>
+            </v-flex>
+            <v-flex xs3 px-1>
+              <v-text-field v-model="variationToAdd.discount" label="Descuento" outlined/>
+            </v-flex>
+            <v-flex xs3 pl-2>
+              <v-text-field v-model="variationToAdd.stock" label="Inventario" outlined/>
+            </v-flex>
+          </v-layout>
+          <v-layout row wrap px-2>
+            <v-flex xs12>
+              Variaciones al momento:
+            </v-flex>
+          </v-layout>
+          <v-layout row wrap px-2>
+            <v-flex v-for="(product, i) in newProduct.variations" :key="i" xs3 px-2>
+              {{ product.typeProduct }} ({{ product.unit }}), ${{ product.price }}
+            </v-flex>
+          </v-layout>
+        </v-card-text>
+        <v-card-actions>
+          <v-spacer />
+          <v-btn color="success" :disabled="variationToAdd.stock <= 0" @click="addVariation()">Agregar Variacion</v-btn>
+          <v-btn dark @click="saveVariations()">Regresar</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+
     <v-dialog v-model="dialogSuccess" max-width="290" persistent>
       <v-card>
         <v-card-title class="headline">Éxito</v-card-title>
@@ -160,11 +251,34 @@ export default {
     }
   },
   data: () => ({
+    saveLoading: false,
     dialogSuccess: false,
+    dialogAddProduct: false,
+    dialogVariations: false,
     drawer: false,
     search: '',
     index: 0,
     selectedTags: [],
+    newProduct: {
+      name: '',
+      pictures: [
+        {
+          src: ''
+        }
+      ],
+      description: '',
+      isShown: true,
+      category: '',
+      bajoPedido: false,
+      variations: []
+    },
+    variationToAdd: {
+      typeProduct: '',
+      unit: '',
+      price: 0,
+      discount: 0,
+      stock: 0
+    },
     categories: [
       {
         selected: [],
@@ -238,6 +352,78 @@ export default {
       }, response => {
         console.log('error')
       })
+    },
+    addProduct () {
+      this.saveLoading = true
+      const options = {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: 'Bearer ' + this.$cookies.get('authToken')
+        }
+      }
+      this.$http.post('products', this.newProduct, options).then(response => {
+        this.closeDialog()
+        this.dialogSuccess = true
+      }, response => {
+        console.log('Error')
+      })
+    },
+    closeDialog () {
+      this.dialogAddProduct = false
+      this.saveLoading = false
+      this.newProduct = {
+        name: '',
+        pictures: [
+          {
+            src: ''
+          }
+        ],
+        description: '',
+        isShown: true,
+        category: '',
+        bajoPedido: false,
+        variations: []
+      }
+    },
+    openVariationsDialog () {
+      this.dialogAddProduct = false
+      this.dialogVariations = true
+    },
+    addVariation () {
+      this.newProduct.variations.push(this.variationToAdd)
+      this.variationToAdd = {
+        typeProduct: '',
+        unit: '',
+        price: 0,
+        discount: 0,
+        stock: 0
+      }
+    },
+    saveVariations () {
+      this.variationToAdd = {
+        typeProduct: '',
+        unit: '',
+        price: 0,
+        discount: 0,
+        stock: 0
+      }
+      this.dialogVariations = false
+      this.dialogAddProduct = true
+    },
+    getMe () {
+      var options = {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: 'Bearer ' + this.$cookies.get('authToken')
+        }
+      }
+      this.$http.get('users/me', options).then(response => {
+        window.localStorage.setItem('user', JSON.stringify(response.data))
+        this.user = JSON.parse(window.localStorage.user)
+        this.getOrders()
+      }, response => {
+        this.loginDialog = true
+      })
     }
   },
   mounted () {
@@ -249,6 +435,12 @@ export default {
   created () {
     if (this.$store.state.selectedFilter !== '') {
       this.categories[0].selected.push(this.$store.state.selectedFilter)
+    }
+    if ('user' in window.localStorage) {
+      this.user = JSON.parse(window.localStorage.user)
+      this.getOrders()
+    } else {
+      this.getMe()
     }
   }
 }
