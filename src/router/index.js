@@ -15,6 +15,7 @@ import Orders from '../views/Orders.vue'
 import AdminOrders from '../views/AdminOrders.vue'
 import ProfitReport from '../views/ProfitReport.vue'
 import Dashboard from '../views/Dashboard.vue'
+import Profile from '../views/Profile.vue'
 
 Vue.use(VueRouter)
 
@@ -93,6 +94,11 @@ const routes = [
     path: '/dashboard',
     name: 'Dashboard',
     component: Dashboard
+  },
+  {
+    path: '/profile',
+    name: 'Profile',
+    component: Profile
   }
 ]
 

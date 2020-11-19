@@ -44,7 +44,7 @@
 
       <v-container>
         <v-layout row wrap pt-2>
-          <v-flex xs2 v-if="user.role === 'admin'">
+          <v-flex xs2 v-if="user && user.role === 'admin'">
             <v-btn large dark @click="dialogAddProduct = true">CREAR PRODUCTO</v-btn>
           </v-flex>
           <v-spacer></v-spacer>
@@ -430,9 +430,7 @@ export default {
       this.$http.get('users/me', options).then(response => {
         window.localStorage.setItem('user', JSON.stringify(response.data))
         this.user = JSON.parse(window.localStorage.user)
-        this.getOrders()
       }, response => {
-        this.loginDialog = true
       })
     }
   },
@@ -448,7 +446,6 @@ export default {
     }
     if ('user' in window.localStorage) {
       this.user = JSON.parse(window.localStorage.user)
-      this.getOrders()
     } else {
       this.getMe()
     }
