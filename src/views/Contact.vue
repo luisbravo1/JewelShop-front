@@ -87,6 +87,12 @@ export default {
         setTimeout(() => { this.error = false }, 7500)
         return
       }
+      if (!this.validateEmail()) {
+        this.responseMessage = 'Correo electrónico no valido'
+        this.error = true
+        setTimeout(() => { this.error = false }, 7500)
+        return
+      }
       emailjs.init('user_6ykMbTFPd3TBE8caXkbym')
       emailjs.send('service_gdbpz4m', 'template_key4st9', this.template)
         .then(response => {
@@ -109,6 +115,10 @@ export default {
         return false
       }
       return true
+    },
+    validateEmail () {
+      const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      return pattern.test(this.template.email)
     }
   }
 }
